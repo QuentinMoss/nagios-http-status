@@ -1,22 +1,25 @@
 import urllib,sys
 
-url_to_check = sys.argv[1]
-status = ""
+def __main__():
 
-def http_status():
-    a = urllib.urlopen(url_to_check)
-    return a.getcode()
+    url_to_check = sys.argv[1]
+    status = ""
 
-try:
-    if http_status() == 200:
-        status = "status 200"
-        exit = 0
-    else:
-        status = "URL returned %s" % http_status()
+    try:
+        url_check = urllib.urlopen(url_to_check)
+        url_status = url_check.getcode()
+        if url_status == 200:
+            status = "Status 200"
+            exit = 0
+        else:
+            status = "URL returned %s" % url_status
+            exit = 1
+    except:
+        print "Unknown error - Can\'t connect to %s" % url_to_check
         exit = 1
-except:
-    print 'Unkown error - Can\'t connect to %s' % url_to_check
-    sys.exit(1)
+        sys.exit()
+    print status
+    print exit
 
-print status
-print exit
+if __name__ == "__main__":
+    __main__()
