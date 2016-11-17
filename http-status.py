@@ -9,7 +9,7 @@ def main():
     parser.add_argument('url', nargs=1, help="URL to check.")
     args = parser.parse_args()
 
-    url_to_check = args.url
+    url_to_check = args.url[0]
     status = ""
 
     try:
