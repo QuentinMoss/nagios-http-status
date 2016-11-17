@@ -1,8 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import argparse
 import urllib,sys
 
-def __main__():
+def main():
+    parser = argparse.ArgumentParser(description="Nagios HTTP Status Check")
+    parser.add_argument('url', nargs=1, help="URL to check.")
+    args = parser.parse_args()
 
-    url_to_check = sys.argv[1]
+    url_to_check = args.url
     status = ""
 
     try:
@@ -21,5 +28,6 @@ def __main__():
     print status
     print exit
 
+    
 if __name__ == "__main__":
-    __main__()
+    main()
