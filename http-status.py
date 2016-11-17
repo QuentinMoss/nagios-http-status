@@ -6,8 +6,6 @@ status = ""
 def http_status():
     a = urllib.urlopen(url_to_check)
     return a.getcode()
-def soap_check():
-    stuff
 
 try:
     if http_status() == 200:
